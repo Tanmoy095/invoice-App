@@ -20,5 +20,12 @@ app.get("api/v1/test", (req, res) => {
 const PORT = process.env.PORT || 1997;
 
 app.listen(PORT, () => {
-  console.log(`SERVER RUNNING ON PORT ${PORT}`);
+  console.log(
+    `${chalk.green.bold("✔")} 👍 Server running in ${chalk.yellow.bold(
+      process.env.NODE_ENV
+    )} mode on port ${chalk.blue.bold(PORT)}`
+  );
+  systemLogs.info(
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
+  );
 });
