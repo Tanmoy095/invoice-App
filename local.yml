@@ -20,16 +20,16 @@ services:
     networks:
       - invoice
 
-  # client:
-  #   build:
-  #     context: ./client
-  #     dockerfile: ./docker/local/Dockerfile
-  #   restart: on-failure
-  #   volumes:
-  #     - ./client:/app
-  #     - /app/node_modules
-  #   networks:
-  #     - invoice
+  client:
+    build:
+      context: ./client
+      dockerfile: ./docker/local/Dockerfile
+    restart: on-failure
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    networks:
+      - invoice
 
   mongodb:
     image: mongo:5.0.6-focal
