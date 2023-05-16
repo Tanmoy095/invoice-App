@@ -3,8 +3,9 @@ import chalk from "chalk";
 import "dotenv/config";
 import express from "express";
 import morgan from "morgan";
-import { morganMiddleware, systemLogs } from "./utils/logger.js";
-
+import { morganMiddleware, systemLogs } from "./utils/Logger.js";
+import connectionToDB from "./config/connectDb.js";
+await connectionToDB();
 const app = express();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
