@@ -7,6 +7,7 @@ import { morganMiddleware, systemLogs } from "./utils/Logger.js";
 import connectionToDB from "./config/connectDb.js";
 import mongoSanitize from "express-mongo-sanitize";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
+import authRoutes from "./routes/authRoutes.js";
 await connectionToDB();
 const app = express();
 if (process.env.NODE_ENV === "development") {
@@ -22,7 +23,7 @@ app.use(morganMiddleware);
 app.get("api/v1/test", (req, res) => {
   res.json({ HI: "welcome to the invoice app" });
 });
-
+app.use("/api/v1/auth", authRoutes);
 app.use(notFound);
 app.use(errorHandler);
 

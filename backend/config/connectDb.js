@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 import chalk from "chalk";
 
 import mongoose from "mongoose";
@@ -12,9 +10,7 @@ const connectionToDB = async () => {
     };
     const connect = await mongoose.connect(
       process.env.MONGO_URI,
-
-      connectionParams,
-      {}
+      connectionParams
     );
     console.log(
       `${chalk.blue.bold(`MongoDB Connected: ${connect.connection.host}`)}`
