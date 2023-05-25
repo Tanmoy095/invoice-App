@@ -1,5 +1,5 @@
-import reteLimit, { rateLimit } from "express-rate-limit";
-import systemLogs from "../utils/Logger.js";
+import rateLimit from "express-rate-limit";
+import { systemLogs } from "../utils/Logger.js";
 
 export const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -14,7 +14,7 @@ export const apiLimiter = rateLimit({
     );
     res.status(options.statusCode).send(options.message);
   },
-  standardHeaders: true, //rate limit info
+  standardHeaders: true,
   legacyHeaders: false,
 });
 
